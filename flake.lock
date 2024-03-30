@@ -1,0 +1,62 @@
+{
+  "nodes": {
+    "linux-vf2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706603436,
+        "narHash": "sha256-oI048iCkvghEIiuDHbxNHtJz/krPwXPB/HB85YUaxL8=",
+        "owner": "starfive-tech",
+        "repo": "linux",
+        "rev": "076ede06c00a4069cd9f90d609eaf35bf1bdc68a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "starfive-tech",
+        "ref": "JH7110_VisionFive2_upstream",
+        "repo": "linux",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1711523803,
+        "narHash": "sha256-UKcYiHWHQynzj6CN/vTcix4yd1eCu1uFdsuarupdCQQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2726f127c15a4cc9810843b96cad73c7eb39e443",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-ghc-cross": {
+      "locked": {
+        "lastModified": 1711738046,
+        "narHash": "sha256-J7/vq+qaf2gZPPKAH+dK9pZAwR6wxuOVNozRQoAstHQ=",
+        "owner": "AlexandreTunstall",
+        "repo": "nixpkgs",
+        "rev": "9b978713e26536cbc555ac33c4a4b1733a7c3eae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AlexandreTunstall",
+        "ref": "ghc-cross-usable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "linux-vf2-src": "linux-vf2-src",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-ghc-cross": "nixpkgs-ghc-cross"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
