@@ -4,6 +4,7 @@ self: super: let
   });
 
 in {
+  libbsd = dontCheck super.libbsd;
   libuv = dontCheck super.libuv;
   pixman = dontCheck super.pixman;
 }
