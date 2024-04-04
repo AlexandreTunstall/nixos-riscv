@@ -5,7 +5,7 @@
 } @ args:
 
 let
-  modDirVersion = "6.8.0";
+  modDirVersion = "6.6.0";
 
 in buildLinux (args // {
   inherit src modDirVersion;
@@ -43,7 +43,7 @@ in buildLinux (args // {
     #DRM_VERISILICON = no;
     #DRM_VERISILICON = module;
     DRM_VERISILICON = yes;
-    STARFIVE_HDMI = yes;
+    STARFIVE_HDMI = yes; # unused (see linux-config logs)
     # For DRM_VERISILICON=y
     DRM = yes;
 
