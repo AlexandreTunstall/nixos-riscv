@@ -41,7 +41,6 @@
       "phy-jh7110-dphy-rx"
       "clk-starfive-jh7110-aon"
       "clk-starfive-jh7110-stg"
-      "phy-jh7110-pci"
       "pcie-starfive"
       #"starfive-hdmi"
       # Default modules
