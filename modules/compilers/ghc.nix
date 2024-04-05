@@ -46,6 +46,10 @@
 
           ghc928 = (super.haskell.compiler.ghc928.override {
             bootPkgs = self.haskell.packages.ghc8107Boot;
+            # LLVM 12 is the highest supported, but it is broken.
+            # GHC doesn't really use LLVM anyway, because it is unregisterised.
+            llvmPackages = self.llvmPackages_15;
+            buildTargetLlvmPackages = self.pkgsBuildTarget.llvmPackages_15;
           }).overrideAttrs ({ configureFlags ? [], passthru ? {}, ... }: {
             configureFlags = configureFlags ++ [ "--enable-unregisterised" ];
 
