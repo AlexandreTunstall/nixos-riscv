@@ -12,5 +12,14 @@ in {
 
   libbsd = dontCheck super.libbsd;
   libuv = dontCheck super.libuv;
+
+  # Fails in ./configure when LuaJIT isn't available
+  neovim-unwrapped = super.neovim-unwrapped.overrideAttrs ({ preConfigure ? "", ... }: {
+    preConfigure = ''
+      ${preConfigure}
+      cmakeFlagsArray+=( -DPREFER_LUA=ON )
+    '';
+  });
+
   pixman = dontCheck super.pixman;
 }
