@@ -34,7 +34,9 @@
         vector = hsLib.dontCheck super.vector;
       };
 
-      unregOverrides = self: super: { };
+      unregOverrides = self: super: {
+        unordered-containers = hsLib.dontCheck super.unordered-containers;
+      };
 
     in {
       haskell = super.haskell // {
