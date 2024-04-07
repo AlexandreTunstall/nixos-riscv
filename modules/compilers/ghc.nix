@@ -35,6 +35,7 @@
       };
 
       unregOverrides = self: super: {
+        extra = hsLib.dontCheck super.extra;
         unordered-containers = hsLib.dontCheck super.unordered-containers;
       };
 
