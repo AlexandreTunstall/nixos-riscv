@@ -39,6 +39,11 @@
         unordered-containers = hsLib.dontCheck super.unordered-containers;
       };
 
+      # There is no neater way of overriding Hadrian
+      withUnthreadedHadrian = ghc: ghc.override {
+        hadrian = hsLib.disableCabalFlag "threaded" ghc.hadrian;
+      };
+
     in {
       haskell = super.haskell // {
         compiler = {
@@ -63,10 +68,10 @@
 
           ghc92 = self.haskell.compiler.ghc928;
 
-          ghc964 = super.haskell.compiler.ghc964.override {
+          ghc964 = withUnthreadedHadrian (super.haskell.compiler.ghc964.override {
             bootPkgs = self.haskell.packages.ghc928;
             llvmPackages = self.llvmPackages_15;
-          };
+          });
 
           ghc96 = self.haskell.compiler.ghc964;
         };
