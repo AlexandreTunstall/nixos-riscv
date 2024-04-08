@@ -40,8 +40,15 @@
       };
 
       # There is no neater way of overriding Hadrian
-      withUnthreadedHadrian = ghc: ghc.override {
-        hadrian = hsLib.disableCabalFlag "threaded" ghc.hadrian;
+      withPatchedHadrian = ghc: ghc.override {
+        hadrian = hsLib.disableCabalFlag "threaded" (hsLib.appendPatches [
+          (self.fetchpatch {
+            name = "enable-ghci.patch";
+            url = "https://gitlab.haskell.org/ghc/ghc/-/commit/dd38aca95ac25adc9888083669b32ff551151259.patch";
+            hash = "sha256-xqs6mw/akxMy+XmVabACzsIviIKP4fS0UEgTk0HJcIc=";
+            stripLen = 1;
+          })
+        ] ghc.hadrian);
       };
 
     in {
@@ -68,9 +75,17 @@
 
           ghc92 = self.haskell.compiler.ghc928;
 
-          ghc964 = withUnthreadedHadrian (super.haskell.compiler.ghc964.override {
+          ghc964 = (withPatchedHadrian (super.haskell.compiler.ghc964.override {
             bootPkgs = self.haskell.packages.ghc928;
             llvmPackages = self.llvmPackages_15;
+          })).overrideAttrs ({ patches, ... }: {
+            patches = patches ++ [
+              (self.fetchpatch {
+                name = "enable-ghci-hadrian.patch";
+                url = "https://gitlab.haskell.org/ghc/ghc/-/commit/c5e47441ab2ee2568b5a913ce75809644ba83271.patch";
+                hash = "sha256-t3KkuME6IqLWuESIMZ7OVAFu7s8G+x0ev+aVzBUqkhg=";
+              })
+            ];
           });
 
           ghc96 = self.haskell.compiler.ghc964;
