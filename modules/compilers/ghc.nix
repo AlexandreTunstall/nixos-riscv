@@ -1,7 +1,7 @@
-{ boot, ... }:
+{ boot, lib, ... }:
 
 {
-  nixpkgs.overlays = [
+  nixpkgs.overlays = lib.mkBefore [
     (self: super: let
       mkBootCompiler = { drv, llvmPackages }: drv.overrideAttrs ({ passthru ? {}, ... }: {
         passthru = passthru // {
