@@ -3,6 +3,10 @@ self: super: let
     doCheck = false;
   });
 
+  pyDontCheck = drv: drv.overridePythonAttrs (old: {
+    doCheck = false;
+  });
+
   hsLib = self.haskell.lib.compose;
 
 in {
@@ -35,4 +39,11 @@ in {
   });
 
   pixman = dontCheck super.pixman;
+  protobuf = dontCheck super.protobuf;
+  
+  pythonPackagesExtensions = super.pythonPackagesExtensions ++ [
+    (pySelf: pySuper: {
+      sphinx = pyDontCheck pySuper.sphinx;
+    })
+  ];
 }
