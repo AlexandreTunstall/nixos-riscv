@@ -39,7 +39,7 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in {
       boot = pkgs.linkFarm "boot" {
-        "ghc-8.10.7" = nixpkgs-ghc-cross.legacyPackages.x86_64-linux.pkgsCross.riscv64.haskell.compiler.integer-simple.ghc8107;
+        "ghc-9.4.8" = nixpkgs-ghc-cross.legacyPackages.x86_64-linux.pkgsCross.riscv64.haskell.compiler.native-bignum.ghc948;
       };
     };
   };
