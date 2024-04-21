@@ -35,16 +35,16 @@
     },
     "nixpkgs-ghc-cross": {
       "locked": {
-        "lastModified": 1711738046,
-        "narHash": "sha256-J7/vq+qaf2gZPPKAH+dK9pZAwR6wxuOVNozRQoAstHQ=",
-        "owner": "AlexandreTunstall",
+        "lastModified": 1713559103,
+        "narHash": "sha256-gR5U9b8LMGMglQ3fBGIm2pDXRfD7EOo7YInnijfP9L0=",
+        "owner": "sternenseemann",
         "repo": "nixpkgs",
-        "rev": "9b978713e26536cbc555ac33c4a4b1733a7c3eae",
+        "rev": "da72955c1a9e2a454e5d7e6d2a835f5067772afe",
         "type": "github"
       },
       "original": {
-        "owner": "AlexandreTunstall",
-        "ref": "ghc-cross-usable",
+        "owner": "sternenseemann",
+        "ref": "ghc-cross",
         "repo": "nixpkgs",
         "type": "github"
       }

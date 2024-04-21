@@ -6,7 +6,7 @@
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    nixpkgs-ghc-cross.url = "github:AlexandreTunstall/nixpkgs?ref=ghc-cross-usable";
+    nixpkgs-ghc-cross.url = "github:sternenseemann/nixpkgs?ref=ghc-cross";
   };
 
   outputs = { self, linux-vf2-src, nixpkgs, nixpkgs-ghc-cross }: {
