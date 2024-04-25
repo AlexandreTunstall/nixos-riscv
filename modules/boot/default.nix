@@ -50,6 +50,10 @@
   hardware.deviceTree.name = "starfive/jh7110-starfive-visionfive-2-v1.3b.dtb";
 
   hardware.deviceTree.overlays = [
+    {
+      name = "8gb-patch";
+      dtsFile = ./8gb-patch.dts;
+    }
     # https://github.com/starfive-tech/linux/pull/99
     {
       name = "qspi-patch";
