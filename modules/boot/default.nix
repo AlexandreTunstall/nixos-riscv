@@ -7,7 +7,7 @@
       generic-extlinux-compatible.enable = true;
     };
 
-    kernelPackages = pkgs.linuxPackages_vf2;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
       "console=tty0"
@@ -20,30 +20,25 @@
     consoleLogLevel = 7;
 
     initrd.availableKernelModules = [
-      "dw_mmc-starfive" "motorcomm"
-      "cdns3-starfive"
-      "clk-starfive-jh7110-vout"
-      "clk-starfive-jh7110-isp"
-      "nvme"
-      "vs-drm"
       # Upstream modules
+      "cdns3-starfive"
+      "clk-starfive-jh7110-aon"
+      "clk-starfive-jh7110-isp"
+      "clk-starfive-jh7110-stg"
+      "clk-starfive-jh7110-vout"
+      "dw_mmc-starfive"
       "dwmac-starfive"
       "jh7110-trng"
-      "phy-jh7110-usb"
-      "phy-jh7110-dphy-rx"
-      "clk-starfive-jh7110-aon"
-      "clk-starfive-jh7110-stg"
+      "motorcomm"
+      "nvme"
       "pcie-starfive"
+      "phy-jh7110-dphy-rx"
+      "phy-jh7110-pcie"
+      "phy-jh7110-usb"
       #"starfive-hdmi"
       # Default modules
       "vfat"
       "nls_cp437"
-    ];
-
-    # Modules that cause system instability
-    blacklistedKernelModules = [
-      #"clk-starfive-jh7110-vout"
-      "jh7110-crypto"
     ];
   };
 

@@ -48,6 +48,16 @@
         ] ghc.hadrian);
       };
 
+      overrides = self: super: {
+        # Profiling is disabled for GHC on RISC-V due to size constraints
+        mkDerivation = args: super.mkDerivation ({
+          enableLibraryProfiling = false;
+        } // args);
+
+        # LLVM segfaults in one of the happy tests
+        happy = hsLib.dontCheck super.happy;
+      };
+
     in {
       haskell = super.haskell // {
         compiler = {
@@ -56,10 +66,10 @@
             llvmPackages = self.llvmPackages_15;
           };
 
-          ghc964 = (withPatchedHadrian (super.haskell.compiler.ghc964.override {
+          ghc966 = (withPatchedHadrian (super.haskell.compiler.ghc966.override {
             bootPkgs = self.haskell.packages.ghc948Boot;
             llvmPackages = self.llvmPackages_15;
-          })).overrideAttrs ({ patches, ... }: {
+          })).overrideAttrs ({ patches ? [], ... }: {
             patches = patches ++ [
               (self.fetchpatch {
                 name = "enable-ghci-hadrian.patch";
@@ -69,11 +79,15 @@
             ];
           });
 
-          ghc96 = self.haskell.compiler.ghc964;
+          ghc96 = self.haskell.compiler.ghc966;
         };
 
         packages = {
-          inherit (super.haskell.packages) ghc964 ghc96;
+          inherit (super.haskell.packages) ghc96;
+
+          ghc966 = super.haskell.packages.ghc966.override {
+            inherit overrides;
+          };
 
           ghc948Boot = mkBootPackages {
             base = super.haskell.packages.ghc948;

@@ -10,16 +10,14 @@ self: super: let
   hsLib = self.haskell.lib.compose;
 
 in {
-  # See https://github.com/catchorg/Catch2/issues/2808
-  # Fixed by https://github.com/NixOS/nixpkgs/pull/295243
-  catch2_3 = super.catch2_3.overrideAttrs ({ NIX_CFLAGS_COMPILE ? "", ... }: {
-    NIX_CFLAGS_COMPILE = "${NIX_CFLAGS_COMPILE} -Wno-error=cast-align";
-  });
-
   haskell = super.haskell // {
     packages = super.haskell.packages // {
       ghc964 = super.haskell.packages.ghc964.override {
         overrides = hsSelf: hsSuper: {
+          # enableSeparateBinOutput causes cyclic references in build outputs
+          mkDerivation = self.lib.makeOverridable (args: hsSuper.mkDerivation (args // {
+            enableSeparateBinOutput = false;
+          }));
           # Tests fail
           happy = hsLib.dontCheck hsSuper.happy;
         };

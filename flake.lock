@@ -1,29 +1,12 @@
 {
   "nodes": {
-    "linux-vf2-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706603436,
-        "narHash": "sha256-oI048iCkvghEIiuDHbxNHtJz/krPwXPB/HB85YUaxL8=",
-        "owner": "starfive-tech",
-        "repo": "linux",
-        "rev": "076ede06c00a4069cd9f90d609eaf35bf1bdc68a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "starfive-tech",
-        "ref": "JH7110_VisionFive2_upstream",
-        "repo": "linux",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1713248628,
-        "narHash": "sha256-NLznXB5AOnniUtZsyy/aPWOk8ussTuePp2acb9U+ISA=",
+        "lastModified": 1737885589,
+        "narHash": "sha256-Zf0hSrtzaM1DEz8//+Xs51k/wdSajticVrATqDrfQjg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5672bc9dbf9d88246ddab5ac454e82318d094bb8",
+        "rev": "852ff1d9e153d8875a83602e03fdef8a63f0ecf8",
         "type": "github"
       },
       "original": {
@@ -33,27 +16,9 @@
         "type": "github"
       }
     },
-    "nixpkgs-ghc-cross": {
-      "locked": {
-        "lastModified": 1713559103,
-        "narHash": "sha256-gR5U9b8LMGMglQ3fBGIm2pDXRfD7EOo7YInnijfP9L0=",
-        "owner": "sternenseemann",
-        "repo": "nixpkgs",
-        "rev": "da72955c1a9e2a454e5d7e6d2a835f5067772afe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sternenseemann",
-        "ref": "ghc-cross",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "linux-vf2-src": "linux-vf2-src",
-        "nixpkgs": "nixpkgs",
-        "nixpkgs-ghc-cross": "nixpkgs-ghc-cross"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
