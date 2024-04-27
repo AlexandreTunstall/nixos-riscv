@@ -20,6 +20,10 @@ in {
     packages = super.haskell.packages // {
       ghc964 = super.haskell.packages.ghc964.override {
         overrides = hsSelf: hsSuper: {
+          # enableSeparateBinOutput causes cyclic references in build outputs
+          mkDerivation = args: hsSuper.mkDerivation (args // {
+            enableSeparateBinOutput = false;
+          });
           # Tests fail
           happy = hsLib.dontCheck hsSuper.happy;
         };
