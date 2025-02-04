@@ -1,5 +1,7 @@
 { ... }:
 {
+  imports = [ ./hydra.nix ];
+
   services.getty.autologinUser = "root";
 
   services.openssh = {
