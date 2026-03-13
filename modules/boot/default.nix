@@ -7,7 +7,7 @@
       generic-extlinux-compatible.enable = true;
     };
 
-    kernelPackages = pkgs.linuxPackages_6_12;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
       "console=tty0"

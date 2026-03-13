@@ -10,6 +10,7 @@
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
           # Needs to be built on x86_64-linux and copied to the RISC-V host
+          # If you're lucky, it will be available in Nixpkgs cache
           boot = self.packages.x86_64-linux.boot.entries;
         };
 
